@@ -54,6 +54,9 @@ A Next.js web app (TypeScript, Tailwind v4) built on the **Titan design system**
 | Responsive (auto-switch at tablet) | `p-inline-element-padding` (0 → 24) `rounded-inline-element` (0 → 12) `ml-user-message-offset` (64 → 128) |
 | Page padding | mobile `px-page-margin-mobile` (24) · tablet+ `tablet:px-page-margin-desktop` (16) `py-page-top` (24) |
 
+## Components
+Read `docs/components.md` before building any screen. It lists every component, what it's for and when to use it. Use them; don't rebuild them. When you add a component, add a story and a catalog entry.
+
 ## Breakpoints & surfaces
 Read `docs/breakpoints.md` before building any page. Every screen is one of 5 **surfaces**: Default Chat, Content Wizard, Onboarding, Single Screen, Modal. Build mobile-first:
 - **Mobile (<926):** 72px black top header plus a menu drawer. No left rail.

@@ -52,7 +52,7 @@ export function ReminderCard({ title, description, icon, due, progress, href = "
           </div>
         )}
       </div>
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-sm bg-surface-brand-subtle">
+      <div className="flex size-10 shrink-0 items-center justify-center rounded-sm bg-surface-brand-subtle text-text-brand">
         <Icon name={icon} />
       </div>
     </a>

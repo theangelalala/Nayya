@@ -47,7 +47,7 @@ export function ChatInput({ placeholder = "Type your message…", onSubmit, show
       <button
         type="submit"
         aria-label="Send message"
-        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-inverse hover:bg-action-primary-hover"
+        className="flex size-10 shrink-0 items-center justify-center rounded-full bg-surface-inverse text-text-inverse hover:bg-action-primary-hover"
       >
         <Icon name="arrow-right" />
       </button>
