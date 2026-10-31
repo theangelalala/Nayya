@@ -62,6 +62,7 @@
   --surface-brand-subtle: var(--color-primary-50); /** Highlighted cards, selected rows */
   --surface-inverse: var(--color-base-content); /** Dark tooltips, banners */
   --surface-overlay: var(--color-base-overlay); /** Modal scrim */
+  --surface-muted: var(--color-neutral-200); /** Tracks, skeletons, muted blocks */
   --text-primary: var(--color-base-content);
   --text-secondary: var(--color-neutral-600);
   --text-disabled: var(--color-neutral-500); /** Disabled and placeholder text only */
@@ -70,15 +71,21 @@
   --text-error: var(--color-error-600);
   --text-success: var(--color-success-800);
   --text-warning: var(--color-warning-800);
+  --text-brand-strong: var(--color-primary-900); /** Text on brand-subtle surfaces, secondary button labels */
   --border-subtle: var(--color-neutral-200); /** Dividers */
   --border-default: var(--color-neutral-400); /** Inputs, cards */
   --border-strong: var(--color-base-content); /** Selected or emphasized items */
   --border-focus: var(--color-primary-400); /** Focus ring */
   --border-error: var(--color-error-600);
+  --border-brand: var(--color-primary-600); /** Secondary button border */
+  --border-brand-strong: var(--color-primary-900); /** Hover/active and focus ring on brand elements */
+  --border-inverse: var(--color-base-background); /** Inner ring on dark elements (focus) */
+  --border-disabled: var(--color-neutral-500); /** Disabled outlines */
   --action-primary: var(--color-primary-600);
   --action-primary-hover: var(--color-primary-900);
   --action-secondary: var(--color-base-white); /** Pair with border.strong */
   --action-disabled: var(--color-neutral-200);
+  --action-secondary-hover: var(--color-primary-50); /** Secondary button hover/active fill */
   --status-error-subtle: var(--color-error-50);
   --status-success-subtle: var(--color-success-50);
   --status-warning-subtle: var(--color-warning-50);
