@@ -22,6 +22,7 @@ StyleDictionary.registerFormat({
     add('--radius-*: initial;');
     add('--shadow-*: initial;');
     add('--text-*: initial;');
+    add('--breakpoint-*: initial;'); // only Titan screen sizes: tablet:, desktop:, widescreen:
     add('--color-transparent: transparent;');
     add('--font-sans: var(--font-family-base);');
     for (const t of dictionary.allTokens) {
@@ -33,6 +34,15 @@ StyleDictionary.registerFormat({
       else if (t.path[0] === 'spacing') add(`--spacing-${t.path.slice(1).join('-')}: ${t.$value};`);
       else if (t.path[0] === 'radius') add(`--radius-${t.path[1]}: ${t.$value};`);
       else if (t.path[0] === 'elevation') add(`--shadow-elevation-${t.path[1]}: var(--${t.name});`);
+      else if (t.path[0] === 'breakpoint') add(`--breakpoint-${t.path[1]}: ${t.$value};`);
+      else if (t.path[0] === 'layout') {
+        // Responsive layout tokens point at the CSS variable (it switches at the tablet breakpoint);
+        // fixed sizes become width/height/max-width classes like w-rail-open, max-w-chat-column.
+        const n = t.path.slice(1).join('-');
+        const responsive = t.$extensions?.['nayya.responsive'];
+        if (t.path.at(-1) === 'radius') add(`--radius-${t.path.slice(1, -1).join('-')}: var(--${t.name});`);
+        else add(`--spacing-${n}: ${responsive ? `var(--${t.name})` : t.$value};`);
+      }
       else if (type === 'typography') {
         const v = t.original.$value;
         const weight = (ref) => weights[ref.replace(/[{}]/g, '').split('.').pop()];
@@ -43,6 +53,22 @@ StyleDictionary.registerFormat({
       }
     }
     return `/* Generated from tokens/tokens.json by tokens/build.mjs. Do not edit by hand. */\n@theme inline {\n${lines.join('\n')}\n}\n`;
+  },
+});
+
+// Responsive values: tokens with $extensions["nayya.responsive"] get an override per breakpoint.
+StyleDictionary.registerFormat({
+  name: 'css/responsive',
+  format: ({ dictionary }) => {
+    const bp = Object.fromEntries(dictionary.allTokens.filter((t) => t.path[0] === 'breakpoint').map((t) => [t.path[1], t.$value]));
+    const byBp = {};
+    for (const t of dictionary.allTokens) {
+      const r = t.$extensions?.['nayya.responsive'];
+      if (!r) continue;
+      for (const [name, value] of Object.entries(r)) (byBp[name] ??= []).push(`    --${t.name}: ${value};`);
+    }
+    const blocks = Object.entries(byBp).map(([name, lines]) => `@media (min-width: ${bp[name]}) {\n  :root {\n${lines.join('\n')}\n  }\n}`);
+    return `/* Generated from tokens/tokens.json by tokens/build.mjs. Do not edit by hand. */\n${blocks.join('\n')}\n`;
   },
 });
 
@@ -60,6 +86,7 @@ const sd = new StyleDictionary({
           format: 'css/variables',
           options: { outputReferences: true, fileHeader: () => ['Generated from tokens/tokens.json. Do not edit by hand.'] },
         },
+        { destination: 'responsive.css', format: 'css/responsive' },
       ],
     },
     tailwind: {
@@ -71,4 +98,4 @@ const sd = new StyleDictionary({
 });
 
 await sd.buildAllPlatforms();
-console.log('✓ tokens built → src/styles/tokens.css, src/styles/theme.css');
+console.log('✓ tokens built → src/styles/tokens.css, responsive.css, theme.css');

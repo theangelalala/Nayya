@@ -4,6 +4,7 @@
   --radius-*: initial;
   --shadow-*: initial;
   --text-*: initial;
+  --breakpoint-*: initial;
   --color-transparent: transparent;
   --font-sans: var(--font-family-base);
   --color-surface-page: var(--surface-page);
@@ -50,8 +51,9 @@
   --spacing-stack-section: 48px;
   --spacing-inset-compact: 12px;
   --spacing-inset-card: 24px;
-  --spacing-page-margin-mobile: 16px;
-  --spacing-page-margin-desktop: 48px;
+  --spacing-page-margin-mobile: 24px;
+  --spacing-page-margin-desktop: 16px;
+  --spacing-page-top: 24px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
@@ -125,4 +127,17 @@
   --shadow-elevation-3: var(--elevation-3);
   --color-chart-blue: var(--chart-blue);
   --color-chart-green: var(--chart-green);
+  --breakpoint-tablet: 926px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-widescreen: 1920px;
+  --spacing-rail-closed: 90px;
+  --spacing-rail-open: 364px;
+  --spacing-header-mobile: 72px;
+  --spacing-chat-column: 670px;
+  --spacing-wizard-chat: 428px;
+  --spacing-onboarding-form: 638px;
+  --spacing-modal: 736px;
+  --spacing-inline-element-padding: var(--layout-inline-element-padding);
+  --radius-inline-element: var(--layout-inline-element-radius);
+  --spacing-user-message-offset: var(--layout-user-message-offset);
 }
