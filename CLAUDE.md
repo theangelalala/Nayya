@@ -46,7 +46,7 @@ A Next.js web app (TypeScript, Tailwind v4) built on the **Titan design system**
 | Buttons/actions | `bg-action-primary` `hover:bg-action-primary-hover` `bg-action-secondary` `bg-action-disabled` |
 | Status | `bg-status-error` `bg-status-success` `bg-status-warning` `bg-status-*-subtle` |
 | Type | `text-heading-51/38/28/21/16` `text-body-21/16/14` (+ `-bold`) `text-fine-print-12` (+ `-bold`) `text-label-16/14/12/10` (+ `-bold`) |
-| Spacing | `p-inset-card` `p-inset-compact` `gap-stack-default` `gap-stack-tight` `gap-stack-section` `gap-inline-default` `gap-inline-tight` `px-page-margin-mobile` `md:px-page-margin-desktop` |
+| Spacing | `p-inset-card` `p-inset-compact` `gap-stack-default` `gap-stack-tight` `gap-stack-section` `gap-inline-default` `gap-inline-tight` `px-page-margin-mobile` `tablet:px-page-margin-desktop` |
 | Radius | `rounded-sm` (4) `rounded-md` (8) `rounded-lg` (16) `rounded-xl` (24) `rounded-full` |
 | Elevation | `shadow-elevation-1` (cards) `shadow-elevation-2` (dropdowns) `shadow-elevation-3` (modals) |
 | Screen sizes | mobile = no prefix · `tablet:` (926px+) · `desktop:` (1440px+) · `widescreen:` (1920px+). Tailwind's `sm/md/lg/xl` are switched off |
