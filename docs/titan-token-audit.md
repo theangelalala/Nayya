@@ -1,7 +1,7 @@
 # Titan Design System: Token Audit & Proposed Tokens
 
 Source: Figma file "[Testing] Nayya Titan Design System", page *Design System (2026-Q1)*. Audited Oct 30, 2026.
-Status: **APPROVED Oct 30, 2026. Colors matched to the Titan Color and Typography System file.** Primary #223C45 · Söhne (web license needed) · colors & type matched to the Titan Color and Typography System · light theme only · primary/900 #0F232A.
+Status: **APPROVED Oct 30, 2026. Colors and typography matched to the Titan Color and Typography System file.** Primary #223C45 · Söhne (web license needed) · light theme only · primary/900 #0F232A.
 
 ---
 
