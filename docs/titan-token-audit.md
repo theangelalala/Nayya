@@ -1,7 +1,7 @@
 # Titan Design System: Token Audit & Proposed Tokens
 
 Source: Figma file "[Testing] Nayya Titan Design System", page *Design System (2026-Q1)*. Audited Oct 30, 2026.
-Status: **APPROVED Oct 30, 2026. Colors matched to the Titan Color and Typography System file.** Primary #223C45 · Söhne (web license needed) · light theme only · primary/900 #0F232A.
+Status: **APPROVED Oct 30, 2026. Colors matched to the Titan Color and Typography System file.** Primary #223C45 · Söhne (web license needed) · colors & type matched to the Titan Color and Typography System · light theme only · primary/900 #0F232A.
 
 ---
 
@@ -173,24 +173,29 @@ Semantic spacing:
 | radius/xl | 24 | 29, 30 |
 | radius/full | 9999 | pills and avatars (54, 94, 100) |
 
-### 3e. Typography (Söhne: Buch 400 / Kräftig 500 / Halbfett 600)
+### 3e. Typography
 
-| Style | Size / line height | Weight | Merges |
-|---|---|---|---|
-| heading/display | 51 / 68 | Halbfett | Heading/51 |
-| heading/xl | 38 / 52 | Halbfett | Heading/38 |
-| heading/lg | 28 / 38 | Halbfett | Heading 28, H1 (28-38) |
-| heading/md | 21 / 30 | Halbfett | Heading 21, H2 (21-30) |
-| heading/sm | 16 / 22 | Halbfett | Heading 16, H3 (16-22) |
-| body/lg | 21 / 30 | Buch (+ bold) | Body 21, Body L |
-| body/md | 16 / 24 | Buch (+ bold) | Body 16, Body M, Body/16 (16/26 dropped) |
-| body/sm | 14 / 24 | Buch (+ bold) | Body 14 |
-| label/md | 16 / 18 | Buch (+ bold) | Label 16, Label M (16-18) |
-| label/sm | 14 / 16 | Buch (+ bold) | Label 14, Label S (14-16) |
-| label/xs | 12 / 14 | Buch (+ bold) | Label 12 |
-| caption | 12 / 20 | Buch | Fine print/12 |
+**Source of truth:** [Titan Color and Typography System → Typography](https://www.figma.com/design/EbjAj6saBxpkAcBrcSl2g9/Titan-Color-and-Typography-System?node-id=7-584). Names and values match that file 1:1, so a Figma style and its code token share the same name (`Body/16 Bold` ↔ `typography.body.16-bold`).
 
-That's 12 styles plus bold variants, down from ~70.
+Font: **Söhne**. Regular = Buch (400), Bold = Halbfett (600). Letter spacing 0 throughout.
+
+| Style | Size / line height | Bold variant |
+|---|---|---|
+| Heading/51 | 51 / 68 | (always bold) |
+| Heading/38 | 38 / 52 | (always bold) |
+| Heading/28 | 28 / 38 | (always bold) |
+| Heading/21 | 21 / 30 | (always bold) |
+| Heading/16 | 16 / 22 | (always bold) |
+| Body/21 | 21 / 36 | Body/21 Bold |
+| Body/16 | 16 / 26 | Body/16 Bold |
+| Body/14 | 14 / 24 | Body/14 Bold |
+| Fine print/12 | 12 / 20 | Fine print/12 Bold |
+| Label/16 | 16 / 18 | Label/16 Bold |
+| Label/14 | 14 / 16 | Label/14 Bold |
+| Label/12 | 12 / 14 | Label/12 Bold |
+| Label/10 | 10 / 12 | Label/10 Bold |
+
+That's 21 styles, down from ~70 in the working file. Mapping the old duplicates: `Body/Body 16`, `Body M (16-24)` → **Body/16** (line height becomes 26). `Label/Label 14`, `Label S (14-16)` → **Label/14**. `Heading/Heading 28`, `H1 (28-38)` → **Heading/28**. `H2 (21-30)` → **Heading/21**. `H3 (16-22)` → **Heading/16**. Inter and Circular text → the same-size Söhne style.
 
 ### 3f. Elevation
 | Token | Value | Use |
