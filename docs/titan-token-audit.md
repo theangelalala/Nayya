@@ -48,7 +48,7 @@ Status: **APPROVED Oct 30, 2026. Colors matched to the Titan Color and Typograph
 
 ### 3a. Primitives (raw palette, never used directly in components)
 
-**Source of truth:** [Titan Color and Typography System](https://www.figma.com/design/EbjAj6saBxpkAcBrcSl2g9/Titan-Color-and-Typography-System?node-id=2001-5714). Every value below matches that file except the 3 marked **Addition**.
+**Source of truth:** [Titan Color and Typography System](https://www.figma.com/design/EbjAj6saBxpkAcBrcSl2g9/Titan-Color-and-Typography-System?node-id=2001-5714). Every value below matches that file except `base/white` (marked **Addition**).
 
 **color/primary**
 | Token | Value |
@@ -87,10 +87,10 @@ Status: **APPROVED Oct 30, 2026. Colors matched to the Titan Color and Typograph
 |---|---|---|
 | color/success/50 | #D0EEDF | |
 | color/success/600 | #15A961 | fills and icons only (3:1 as text) |
-| color/success/800 | #0E7A45 | **Addition**: success text, 5.2:1 ✓ |
+| color/success/800 | #15A961 | success text (same as 600, per your decision; 3:1, below AA) |
 | color/warning/50 | #FEEFD4 | |
 | color/warning/600 | #F9B12A | fills and icons only (1.8:1 as text); put dark text on top |
-| color/warning/800 | #8A5A00 | **Addition**: warning text, 5.7:1 ✓ |
+| color/warning/800 | #FFB52C | warning text (per your decision; 1.8:1, below AA) |
 | color/error/50 | #FADBD6 | |
 | color/error/600 | #D53119 | passes as text ✓ |
 
