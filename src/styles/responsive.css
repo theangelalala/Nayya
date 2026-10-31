@@ -1,0 +1,8 @@
+/* Generated from tokens/tokens.json by tokens/build.mjs. Do not edit by hand. */
+@media (min-width: 926px) {
+  :root {
+    --layout-inline-element-padding: 24px;
+    --layout-inline-element-radius: 12px;
+    --layout-user-message-offset: 128px;
+  }
+}

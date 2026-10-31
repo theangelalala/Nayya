@@ -15,7 +15,8 @@ function leaves(node: Node, path: string[] = []): { path: string[]; token: Node 
 const t = tokens as unknown as Record<string, Node>;
 const cssVar = (path: string[]) => `var(--${path.join("-")})`;
 
-const colorGroups = ["surface", "text", "border", "action", "status", "chart"] as const;
+const bp = (name: string) => String((t.breakpoint[name] as Node).$value);
+const colorGroups =["surface", "text", "border", "action", "status", "chart"] as const;
 const typeStyles = leaves(t.typography).map(({ path }) => path.join("-"));
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
@@ -29,7 +30,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 
 export function Foundations() {
   return (
-    <main className="flex flex-col gap-stack-section p-page-margin-mobile md:p-page-margin-desktop max-w-6xl">
+    <main className="flex flex-col gap-stack-section px-page-margin-mobile py-page-top tablet:px-page-margin-desktop max-w-6xl">
       <header className="flex flex-col gap-stack-tight">
         <h1 className="text-heading-51">Titan Foundations</h1>
         <p className="text-body-16 text-text-secondary">
@@ -41,7 +42,7 @@ export function Foundations() {
         {colorGroups.map((group) => (
           <div key={group} className="flex flex-col gap-stack-tight">
             <h3 className="text-heading-16 capitalize">{group}</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-inline-default">
+            <div className="grid grid-cols-2 tablet:grid-cols-4 desktop:grid-cols-6 gap-inline-default">
               {leaves(t[group], [group]).map(({ path, token }) => (
                 <div key={path.join("-")} className="flex flex-col gap-inline-tight">
                   <div
@@ -77,6 +78,33 @@ export function Foundations() {
               <span className="text-label-10 text-text-secondary">{String(token.$value)}</span>
             </div>
           ))}
+        </div>
+      </Section>
+
+      <Section title="Breakpoints & layout">
+        <p className="text-body-14 text-text-secondary">
+          Mobile below {bp("tablet")} · Tablet {bp("tablet")}+ · Desktop {bp("desktop")}+ · Widescreen {bp("widescreen")}+. Rules per surface:{" "}
+          <code>docs/breakpoints.md</code>.
+        </p>
+        <div className="flex flex-col gap-inline-default">
+          {leaves(t.layout, ["layout"]).map(({ path, token }) => {
+            const r = (token.$extensions as Record<string, Record<string, string>> | undefined)?.["nayya.responsive"];
+            return (
+              <div key={path.join("-")} className="flex items-baseline gap-inline-default border-b border-border-subtle pb-2">
+                <span className="w-56 shrink-0 text-label-12">{path.slice(1).join("/")}</span>
+                <span className="text-label-12-bold">
+                  {String(token.$value)}
+                  {r ? ` → ${r.tablet} on tablet+` : ""}
+                </span>
+                <span className="text-label-10 text-text-secondary">{token.$description}</span>
+              </div>
+            );
+          })}
+        </div>
+        <div className="bg-surface-subtle p-inline-element-padding rounded-inline-element border border-border-subtle">
+          <span className="text-label-12">
+            Live example: this box uses <code>p-inline-element-padding</code> and <code>rounded-inline-element</code>. Resize the window past 926px to see it change.
+          </span>
         </div>
       </Section>
 

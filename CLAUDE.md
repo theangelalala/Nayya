@@ -49,6 +49,16 @@ A Next.js web app (TypeScript, Tailwind v4) built on the **Titan design system**
 | Spacing | `p-inset-card` `p-inset-compact` `gap-stack-default` `gap-stack-tight` `gap-stack-section` `gap-inline-default` `gap-inline-tight` `px-page-margin-mobile` `md:px-page-margin-desktop` |
 | Radius | `rounded-sm` (4) `rounded-md` (8) `rounded-lg` (16) `rounded-xl` (24) `rounded-full` |
 | Elevation | `shadow-elevation-1` (cards) `shadow-elevation-2` (dropdowns) `shadow-elevation-3` (modals) |
+| Screen sizes | mobile = no prefix · `tablet:` (926px+) · `desktop:` (1440px+) · `widescreen:` (1920px+). Tailwind's `sm/md/lg/xl` are switched off |
+| Layout sizes | `w-rail-closed` (90) `w-rail-open` (364) `h-header-mobile` (72) `max-w-chat-column` (670) `w-wizard-chat` (428) `max-w-onboarding-form` (638) `max-w-modal` (736) |
+| Responsive (auto-switch at tablet) | `p-inline-element-padding` (0 → 24) `rounded-inline-element` (0 → 12) `ml-user-message-offset` (64 → 128) |
+| Page padding | mobile `px-page-margin-mobile` (24) · tablet+ `tablet:px-page-margin-desktop` (16) `py-page-top` (24) |
+
+## Breakpoints & surfaces
+Read `docs/breakpoints.md` before building any page. Every screen is one of 5 **surfaces**: Default Chat, Content Wizard, Onboarding, Single Screen, Modal. Build mobile-first:
+- **Mobile (<926):** 72px black top header plus a menu drawer. No left rail.
+- **Tablet+:** left rail (90 closed / 364 open). Content = viewport − rail.
+- Default Chat column is fixed at 670 and centered. Wizard: chat 428 + fluid right panel. Onboarding: no rail, form 638 centered. Modal: 736 centered (mobile: full width minus 32 margins).
 
 ## Component structure
 - `src/components/primitives/`: Button, Input, Checkbox, Toggle, Tag, Icon…

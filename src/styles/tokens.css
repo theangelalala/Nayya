@@ -55,6 +55,19 @@
   --elevation-1: 0px 1px 4px 0px #00000014; /** Cards */
   --elevation-2: 0px 4px 8px 0px #00000026; /** Dropdowns, popovers */
   --elevation-3: 0px 4px 20px 0px #00000040; /** Modals */
+  --breakpoint-tablet: 926px;
+  --breakpoint-desktop: 1440px;
+  --breakpoint-widescreen: 1920px;
+  --layout-rail-closed: 90px; /** Left rail, closed (tablet+) */
+  --layout-rail-open: 364px; /** Left rail, open (tablet+) */
+  --layout-header-mobile: 72px; /** Top header height on mobile */
+  --layout-chat-column: 670px; /** Default Chat column width, centered (tablet+) */
+  --layout-wizard-chat: 428px; /** Chat panel in Content Wizard (tablet+) */
+  --layout-onboarding-form: 638px; /** Onboarding form width, centered (tablet+) */
+  --layout-modal: 736px; /** Modal dialog width (tablet+) */
+  --layout-inline-element-padding: 0px; /** Inline tables/info: full-bleed on mobile, inset on tablet+ */
+  --layout-inline-element-radius: 0px; /** Inline tables/info: square on mobile, rounded on tablet+ */
+  --layout-user-message-offset: 64px; /** Left offset of the user chat bubble */
   --surface-page: var(--color-base-background); /** App background */
   --surface-default: var(--color-base-white); /** Cards, modals */
   --surface-subtle: var(--color-neutral-100); /** Secondary panels, table stripes */
@@ -99,8 +112,9 @@
   --spacing-stack-section: var(--space-12); /** Between page sections */
   --spacing-inset-compact: var(--space-3); /** Buttons, inputs, tags */
   --spacing-inset-card: var(--space-6); /** Inside cards and widgets */
-  --spacing-page-margin-mobile: var(--space-4);
-  --spacing-page-margin-desktop: var(--space-12);
+  --spacing-page-margin-mobile: var(--space-6); /** Mobile side margin (24px, per Surfaces) */
+  --spacing-page-margin-desktop: var(--space-4); /** Content-area side padding on tablet+ (16px, per Surfaces) */
+  --spacing-page-top: var(--space-6); /** Content-area top/bottom padding on tablet+ (24px) */
   --typography-heading-16: var(--font-weight-bold) 16px/22px var(--font-family-base);
   --typography-heading-21: var(--font-weight-bold) 21px/30px var(--font-family-base);
   --typography-heading-28: var(--font-weight-bold) 28px/38px var(--font-family-base);
