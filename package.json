@@ -1,0 +1,42 @@
+{
+  "name": "nayya",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "tokens": "node tokens/build.mjs",
+    "predev": "npm run tokens",
+    "dev": "next dev",
+    "prebuild": "npm run tokens",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint && node scripts/check-tokens.mjs",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prestorybook": "npm run tokens",
+    "prebuild-storybook": "npm run tokens"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "next": "16.4.3",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.6.5",
+    "@storybook/addon-docs": "^10.6.5",
+    "@storybook/addon-mcp": "^10.6.5",
+    "@storybook/nextjs-vite": "^10.6.5",
+    "@tailwindcss/turbopack": "^4",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.4.3",
+    "storybook": "^10.6.5",
+    "style-dictionary": "^5.7.1",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "vite": "latest"
+  }
+}
