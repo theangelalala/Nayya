@@ -1,7 +1,7 @@
 # Titan Design System: Token Audit & Proposed Tokens
 
 Source: Figma file "[Testing] Nayya Titan Design System", page *Design System (2026-Q1)*. Audited Oct 30, 2026.
-Status: **APPROVED Oct 30, 2026.** Primary #223C45 · Söhne (web license needed) · light theme only · primary/900 #0F232A.
+Status: **APPROVED Oct 30, 2026. Colors matched to the Titan Color and Typography System file.** Primary #223C45 · Söhne (web license needed) · light theme only · primary/900 #0F232A.
 
 ---
 
@@ -28,7 +28,7 @@ Status: **APPROVED Oct 30, 2026.** Primary #223C45 · Söhne (web license needed
 **Accessibility flags** (contrast on the #FBFBFB background, needs 4.5:1 for body text):
 - #9A9692 (neutral 500) is **2.84:1** ✗. Use only for disabled text or placeholders, never body text.
 - #15A961 (success green) is **2.95:1** ✗ as text. It's fine as a fill or icon; success *text* needs a darker green.
-- #E19405 (warning) is **2.4:1** ✗ as text. Same rule.
+- #F9B12A (warning) is **1.8:1** ✗ as text. Same rule.
 - #1A1A1A, #625D59, #223C45, #003184 and #D53119 all pass ✓.
 
 ---
@@ -48,6 +48,8 @@ Status: **APPROVED Oct 30, 2026.** Primary #223C45 · Söhne (web license needed
 
 ### 3a. Primitives (raw palette, never used directly in components)
 
+**Source of truth:** [Titan Color and Typography System](https://www.figma.com/design/EbjAj6saBxpkAcBrcSl2g9/Titan-Color-and-Typography-System?node-id=2001-5714). Every value below matches that file except the 3 marked **Addition**.
+
 **color/primary**
 | Token | Value |
 |---|---|
@@ -61,8 +63,6 @@ Status: **APPROVED Oct 30, 2026.** Primary #223C45 · Söhne (web license needed
 **color/neutral** (warm grays)
 | Token | Value |
 |---|---|
-| color/neutral/0 | #FFFFFF |
-| color/neutral/25 | #FBFBFB |
 | color/neutral/50 | #FCFBF9 |
 | color/neutral/100 | #F3F2F1 |
 | color/neutral/200 | #E7E5E3 |
@@ -73,57 +73,67 @@ Status: **APPROVED Oct 30, 2026.** Primary #223C45 · Söhne (web license needed
 | color/neutral/700 | #463F3C |
 | color/neutral/800 | #2D2A28 |
 | color/neutral/900 | #1E1C1B |
-| color/neutral/950 | #1A1A1A |
+
+**color/base** (Titan "One-offs")
+| Token | Value | Note |
+|---|---|---|
+| color/base/background | #FBFBFB | Titan "Background" |
+| color/base/content | #1A1A1A | Titan "Content" |
+| color/base/overlay | #2D2A28 @ 60% | Titan "Modal" |
+| color/base/white | #FFFFFF | **Addition**: card and modal surfaces |
 
 **color/status**
 | Token | Value | Note |
 |---|---|---|
-| color/error/100 | #FADBD6 | |
-| color/error/600 | #D53119 | merges #E84C34 and #CC3A24 |
-| color/success/100 | #D0EEDF | |
-| color/success/600 | #15A961 | fills/icons only |
-| color/success/800 | #0E7A45 | **new**, for success text (passes AA) |
-| color/warning/100 | #FEEFD4 | already used as a raw value |
-| color/warning/600 | #E19405 | fills/icons only |
-| color/warning/900 | #A97412 | |
+| color/success/50 | #D0EEDF | |
+| color/success/600 | #15A961 | fills and icons only (3:1 as text) |
+| color/success/800 | #0E7A45 | **Addition**: success text, 5.2:1 ✓ |
+| color/warning/50 | #FEEFD4 | |
+| color/warning/600 | #F9B12A | fills and icons only (1.8:1 as text); put dark text on top |
+| color/warning/800 | #8A5A00 | **Addition**: warning text, 5.7:1 ✓ |
+| color/error/50 | #FADBD6 | |
+| color/error/600 | #D53119 | passes as text ✓ |
 
 **color/chart:** blue #5D819E, green #559E7F
+
+> Note: in the Titan file, 50/100/200 and 400/600/900 of Success, Warning and Error are duplicates of the same two values. They are collapsed to 50 and 600 here.
 
 ### 3b. Semantic tokens (what components use)
 
 | Token | → Primitive | Use |
 |---|---|---|
 | **Surfaces** | | |
-| surface/page | neutral/25 | app background |
-| surface/default | neutral/0 | cards, modals |
+| surface/page | base/background | app background |
+| surface/default | base/white | cards, modals |
 | surface/subtle | neutral/100 | secondary panels, table stripes |
 | surface/brand | primary/600 | brand blocks, primary buttons |
 | surface/brand-subtle | primary/50 | highlighted cards, selected rows |
-| surface/inverse | neutral/950 | dark tooltips and banners |
-| surface/overlay | neutral/800 @ 60% | modal scrim |
+| surface/inverse | base/content | dark tooltips and banners |
+| surface/overlay | base/overlay | modal scrim |
 | **Text** | | |
-| text/primary | neutral/950 | body and headings |
+| text/primary | base/content | body and headings |
 | text/secondary | neutral/600 | supporting text |
 | text/disabled | neutral/500 | disabled and placeholder text only |
-| text/inverse | neutral/25 | text on dark or brand surfaces |
+| text/inverse | base/background | text on dark or brand surfaces |
 | text/brand | primary/600 | links, emphasis |
 | text/error | error/600 | |
 | text/success | success/800 | |
+| text/warning | warning/800 | |
 | **Borders** | | |
 | border/subtle | neutral/200 | dividers |
 | border/default | neutral/400 | inputs, cards |
-| border/strong | neutral/950 | selected or emphasized items |
+| border/strong | base/content | selected or emphasized items |
 | border/focus | primary/400 | focus ring |
 | border/error | error/600 | |
 | **Actions** | | |
 | action/primary | primary/600 | primary button fill |
 | action/primary-hover | primary/900 | |
-| action/secondary | neutral/0 | secondary button fill (with border/strong) |
+| action/secondary | base/white | secondary button fill (with border/strong) |
 | action/disabled | neutral/200 | |
 | **Status backgrounds** | | |
-| status/error-subtle | error/100 | |
-| status/success-subtle | success/100 | |
-| status/warning-subtle | warning/100 | |
+| status/error-subtle | error/50 | |
+| status/success-subtle | success/50 | |
+| status/warning-subtle | warning/50 | |
 
 ### 3c. Spacing (4px base, plus 2 and 6 for tight UI)
 
