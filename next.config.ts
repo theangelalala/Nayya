@@ -1,7 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // The component catalog (Storybook) is built into public/storybook; /components opens it.
+  async redirects() {
+    return [
+      { source: "/components", destination: "/storybook/index.html", permanent: false },
+      { source: "/storybook", destination: "/storybook/index.html", permanent: false },
+    ];
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {
