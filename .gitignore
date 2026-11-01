@@ -45,3 +45,4 @@ storybook-static
 
 # Storybook built into the site at deploy time
 /public/storybook
+/screenshots
