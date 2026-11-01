@@ -43,6 +43,11 @@ Figma names are in brackets, so you can match the design file.
 `<Toggle label …>`
 - On/off settings that **take effect immediately** (notifications). If the change needs a Save button, use a Checkbox instead.
 
+### SelectorInput [Selector Input]
+`<SelectorInput legend options type="radio" | "checkbox" resizing="fill" | "hug" defaultValue? disabledOptions? onChange?>`
+- A whole question: the legend plus bordered answer cards, grouped for screen readers. **Prefer this over loose Radio/Checkbox cards** in wizards and onboarding.
+- **fill**: stacked full-width answers (long labels, most mobile cases). **hug**: short answers side by side (Yes / No / Not sure).
+
 ### Icon
 `<Icon name="…" />`. Takes its color from the text color around it. Names are in `Icon.tsx`.
 
@@ -62,6 +67,27 @@ Figma names are in brackets, so you can match the design file.
 ### PromptSuggestions [Suggestions / _ Bullet Item]
 `<PromptSuggestions suggestions onSelect heading?>`. 2–4 starter prompts under the chat input, written as things the user would say.
 
+### Chat building blocks
+A reply is `UserMessage` → `AiLoading` while waiting → one or more `AiMessage`s. Put the blocks below **inside** an `AiMessage`.
+
+- **UserMessage** [User message]: `<UserMessage>text</UserMessage>`. Right-aligned gray bubble; always leaves a left gap.
+- **AiMessage** [AI Message Block]: `<AiMessage aiAvatar?>…</AiMessage>`. Avatar on the first message of a reply only (`aiAvatar={false}` on follow-ups). Plain `<p>` inside gets Body/16; blocks are spaced 16px apart.
+- **AiLoading** [AI Loading Text / Loading Mask]: `<AiLoading stage? skeleton?>`. Cycles "Gathering information… → Analyzing data… → Wrapping things up…" by itself. Use `skeleton` for long answers.
+- **BulletList** [_ AI Bullet List / _ Bullet Item]: `<BulletList type="dot" | "number" | "letter" items>`. Numbers for steps in order. Use `<strong>Label:</strong> value` for key facts.
+- **ActionFeedback** [Action Feedback]: `<ActionFeedback type="positive" | "negative" | "neutral" title? message?>`. Confirms the result of an action ("Contribution updated"). Not for general tips.
+- **AiSelection** [_ AI Selection Item]: `<AiSelection options={[{label}]} selected? onSelect>`. 1–2 quick replies the AI offers ("Yes, update it" / "Not now"). Keep labels short; first person.
+- **InlineInformation** [Inline Information]: `<InlineInformation items={[{label, value, muted?, dividerBefore?}]}>`. Gray box of label/value facts (before → after amounts).
+- **InlineTable** [Inline Table – Responsive / – Scroll]: `<InlineTable columns rows layout="responsive" | "scroll" caption>`. Comparisons. **responsive** for 2–3 short columns, **scroll** for long text or 3+ columns.
+- **ExampleScenario** [Example Scenario]: `<ExampleScenario title?>…</ExampleScenario>`. A worked example with numbers, between two rules.
+- **UserRelevance** [User Relevance]: `<UserRelevance title?>…</UserRelevance>`. "How this applies to you": ties general info back to the person's own plan. Usually the last block of an explanation.
+- Extended description + bullets [Figma] is just an `AiMessage` with paragraphs and a `BulletList`. There's no separate component.
+
+### ChecklistItem [_ Checklist Item]
+`<ChecklistItem title description? done? defaultOpen?>`. One task in a checklist; tap to expand. Stack them with no gap.
+
+### ListItem [List Item]
+`<ListItem label selected? onClick>`. One option in a dropdown menu or picker. Wrap the list in `role="listbox"` on a `shadow-elevation-2` panel.
+
 ## Surfaces (`src/components/surfaces/`)
 See `docs/breakpoints.md` for layout rules.
 
@@ -72,8 +98,19 @@ See `docs/breakpoints.md` for layout rules.
 | Content Wizard | | to build |
 | Onboarding | | to build |
 | Single Screen | | to build |
-| Modal | | to build |
+| Modal | `Modal` | ✅ |
 
-## Not built yet (exist in Figma)
-Tabs [Tab Comp], Modal [Modals], Bottom navigation [Bottom_Nav], Mobile header [Mobile_Header_1], Selector Input (multi-select list), List Item, Inline Table (scroll / responsive), Inline Information, AI Message Block, User Message, AI Loading (text / mask), Action Feedback, Checklist Item, Example Scenario, Extended description + bullets, User Relevance.
-If a screen needs one of these, build it from the Figma component first, add a story and add it to this catalog.
+### Modal [Modals]
+`<Modal open onClose title size="small" | "large" actions>…</Modal>`
+- **small**: confirm a decision ("You're about to exit this experience."). **large**: explain something with an image.
+- Actions: secondary first, the one primary last ("No, stay" / "Yes, continue"). Esc, × and clicking outside all close it.
+
+### FlowHeader [Tab Comp]
+`<FlowHeader title shortlist?={{ total, onClick }} onExit>`. The dark bar across the top of a guided flow (Open Enrollment). Exit should open a small Modal to confirm.
+
+### BottomNav [Bottom_Nav]
+`<BottomNav backLabel? nextLabel variant="primary" | "secondary" nextDisabled? onBack onNext>`. Back/Next bar at the bottom of wizard and onboarding steps. Leave out `backLabel` on the first step.
+
+## Not built yet
+Mobile header [Mobile_Header_1] is part of `AppShell`. Everything else in the Figma page is built.
+If a screen needs something new, build it from the Figma component first, add a story and add it to this catalog.
