@@ -3,6 +3,7 @@ import { WizardDemo } from "@/app/wizard/WizardDemo";
 import OnboardingPage from "@/app/onboarding/page";
 import SettingsPage from "@/app/settings/page";
 import { LeaveDueDate } from "@/app/leave/LeaveDueDate";
+import { ReviewChoices } from "@/app/review/ReviewChoices";
 
 /** The surfaces with sample content. Use the viewport (ruler) button to check mobile and tablet. */
 const meta: Meta = { title: "Surfaces/Screens", parameters: { layout: "fullscreen" } };
@@ -13,3 +14,4 @@ export const ContentWizard: S = { render: () => <WizardDemo /> };
 export const Onboarding: S = { render: () => <OnboardingPage /> };
 export const SingleScreen: S = { render: () => <SettingsPage /> };
 export const LeavePlanningDueDate: S = { render: () => <LeaveDueDate /> };
+export const OpenEnrollmentReview: S = { render: () => <ReviewChoices /> };
