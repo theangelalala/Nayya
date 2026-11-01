@@ -1,4 +1,4 @@
-import Image from "next/image";
+import type { CSSProperties } from "react";
 
 /** Titan icon names. Each maps to an SVG exported from the Figma Icon set, in /public/icons. */
 export const iconNames = [
@@ -6,9 +6,15 @@ export const iconNames = [
   "arrow-elbow",
   "arrow-right",
   "bell",
+  "calendar",
   "caret-down",
+  "caret-down-16",
   "caret-left",
+  "caret-left-16",
+  "caret-right-16",
+  "caret-up-16",
   "chat-plus",
+  "check-16",
   "clock",
   "launchpad",
   "list-checks",
@@ -26,9 +32,15 @@ const natural: Record<IconName, [number, number]> = {
   "arrow-elbow": [16, 16],
   "arrow-right": [25, 25],
   bell: [24, 24],
+  calendar: [24, 24],
   "caret-down": [26, 14],
+  "caret-down-16": [16, 16],
   "caret-left": [24, 24],
+  "caret-left-16": [16, 16],
+  "caret-right-16": [16, 16],
+  "caret-up-16": [16, 16],
   "chat-plus": [24, 24],
+  "check-16": [16, 16],
   clock: [24, 24],
   launchpad: [24, 24],
   "list-checks": [20, 20],
@@ -46,25 +58,26 @@ type IconProps = {
   name: IconName;
   /** Rotate the icon in 90° steps (e.g. caret-down → caret-up with 180). */
   rotate?: 0 | 90 | 180 | 270;
-  /** Extra classes for layout only (margins, flex). Never use it to recolor. */
+  /** Layout classes, or a text color token to tint it (e.g. "text-text-brand"). */
   className?: string;
 };
 
 /**
- * Titan icon. Decorative by default (hidden from screen readers):
- * put the accessible name on the button or link that wraps it.
+ * Titan icon. Takes its color from the surrounding text color (currentColor),
+ * so it follows the component's state: white on a primary button, red when destructive, gray when disabled.
+ * Decorative by default: put the accessible name on the button or link that wraps it.
  */
 export function Icon({ name, rotate = 0, className }: IconProps) {
   const [w, h] = natural[name];
-  return (
-    <Image
-      src={`/icons/${name}.svg`}
-      width={w}
-      height={h}
-      alt=""
-      aria-hidden
-      unoptimized
-      className={`shrink-0 ${rotation[rotate]} ${className ?? ""}`}
-    />
-  );
+  const style: CSSProperties = {
+    width: w,
+    height: h,
+    maskImage: `url(/icons/${name}.svg)`,
+    WebkitMaskImage: `url(/icons/${name}.svg)`,
+    maskSize: "100% 100%",
+    WebkitMaskSize: "100% 100%",
+    maskRepeat: "no-repeat",
+    WebkitMaskRepeat: "no-repeat",
+  };
+  return <span aria-hidden className={`inline-block shrink-0 bg-current ${rotation[rotate]} ${className ?? ""}`} style={style} />;
 }
