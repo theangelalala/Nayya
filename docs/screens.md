@@ -12,3 +12,4 @@ Live at `nayya-seven.vercel.app` + the path.
 | `/onboarding` | Account setup: a few more details | Onboarding | Name, birth date, address |
 | `/settings` | Settings | Single Screen | Notification toggles |
 | `/leave` | Leave planning: when is your baby due | Content Wizard | Date check, birth type, leave summary in chat |
+| `/review` | Open Enrollment: review your choices | Content Wizard | Plan summaries, total cost, agree checkbox, enrolled confirmation |
