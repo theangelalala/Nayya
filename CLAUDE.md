@@ -54,6 +54,9 @@ A Next.js web app (TypeScript, Tailwind v4) built on the **Titan design system**
 | Responsive (auto-switch at tablet) | `p-inline-element-padding` (0 → 24) `rounded-inline-element` (0 → 12) `ml-user-message-offset` (64 → 128) |
 | Page padding | mobile `px-page-margin-mobile` (24) · tablet+ `tablet:px-page-margin-desktop` (16) `py-page-top` (24) |
 
+## Building screens
+When Angela asks for a new screen, page, step or modal, use the **build-screen** skill (`.claude/skills/build-screen/SKILL.md`). Existing screens are listed in `docs/screens.md`.
+
 ## Components
 Read `docs/components.md` before building any screen. It lists every component, what it's for and when to use it. Use them; don't rebuild them. When you add a component, add a story and a catalog entry.
 
