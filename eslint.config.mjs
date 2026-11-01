@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Storybook output built into the site at deploy time:
+    "public/storybook/**",
+    "storybook-static/**",
   ]),
 ]);
 

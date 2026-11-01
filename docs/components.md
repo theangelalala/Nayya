@@ -95,10 +95,26 @@ See `docs/breakpoints.md` for layout rules.
 |---|---|---|
 | App shell (rail + mobile header) | `AppShell`, `Sidebar` | ✅ |
 | Default Chat | `DefaultChat` | ✅ |
-| Content Wizard | | to build |
-| Onboarding | | to build |
-| Single Screen | | to build |
+| Content Wizard | `ContentWizard` (inside `AppShell`) | ✅ sample at `/wizard` |
+| Onboarding | `Onboarding` + `FormRow` (no `AppShell`) | ✅ sample at `/onboarding` |
+| Single Screen | `SingleScreen` (inside `AppShell`) | ✅ sample at `/settings` |
 | Modal | `Modal` | ✅ |
+
+### Picking a surface
+- **Default Chat**: open-ended questions; the chat is the whole page.
+- **ContentWizard**: a guided, multi-step task (enrollment, leave planning). The step is on the right, the chat on the left for questions. Each step: one heading, one question or group of fields, Back/Next.
+- **Onboarding**: account setup before entering the app. One centered form per page, one primary button.
+- **SingleScreen**: a standalone page reached from the rail (Settings, Benefits Hub).
+- **Modal**: a confirmation or short explanation over any surface. Bottom sheet on mobile.
+
+### ContentWizard
+`<ContentWizard flowTitle stepTitle stepDescription? chat? shortlist? nav={{backLabel?, nextLabel, nextDisabled?}} onExit onSend>{step content}</ContentWizard>`
+
+### Onboarding
+`<Onboarding title description? submitLabel? onSubmit>{fields}</Onboarding>`. Use `<FormRow>` for two short fields side by side.
+
+### SingleScreen
+`<SingleScreen title headerActions?>{content}</SingleScreen>`
 
 ### Modal [Modals]
 `<Modal open onClose title size="small" | "large" actions>…</Modal>`
