@@ -19,12 +19,12 @@ type FlowHeaderProps = {
 export function FlowHeader({ title, shortlist, onExit }: FlowHeaderProps) {
   return (
     <header className="flex h-18 w-full items-center gap-4 border-b border-border-default bg-surface-brand px-page-margin-mobile py-2 text-text-inverse tablet:px-8">
-      <h1 className="min-w-0 flex-1 truncate text-heading-21">{title}</h1>
+      <h1 className="min-w-0 flex-1 truncate text-heading-16 tablet:text-heading-21">{title}</h1>
       {shortlist && (
         <button
           type="button"
           onClick={shortlist.onClick}
-          className="flex h-11 items-center gap-2 rounded-full bg-surface-page px-6 text-label-16 text-text-primary hover:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-inverse"
+          className="flex h-11 shrink-0 items-center gap-2 rounded-full bg-surface-page px-4 text-label-16 tablet:px-6 text-text-primary hover:bg-surface-subtle focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-border-inverse"
         >
           <Icon name="check-square-offset" />
           {shortlist.total}
