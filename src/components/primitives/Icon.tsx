@@ -23,6 +23,15 @@ export const iconNames = [
   "sidebar-toggle",
   "sign-out",
   "sparkle",
+  "caret-up",
+  "check",
+  "check-circle",
+  "check-square-offset",
+  "info",
+  "warning-circle",
+  "x",
+  "x-16",
+  "x-circle",
 ] as const;
 export type IconName = (typeof iconNames)[number];
 
@@ -49,6 +58,15 @@ const natural: Record<IconName, [number, number]> = {
   "sidebar-toggle": [40, 40],
   "sign-out": [24, 24],
   sparkle: [24, 24],
+  "caret-up": [24, 24],
+  "check": [24, 24],
+  "check-circle": [24, 24],
+  "check-square-offset": [24, 24],
+  "info": [24, 24],
+  "warning-circle": [24, 24],
+  "x": [24, 24],
+  "x-16": [16, 16],
+  "x-circle": [24, 24],
 };
 
 const rotation = { 0: "", 90: "rotate-90", 180: "rotate-180", 270: "-rotate-90" } as const;
@@ -58,6 +76,8 @@ type IconProps = {
   name: IconName;
   /** Rotate the icon in 90° steps (e.g. caret-down → caret-up with 180). */
   rotate?: 0 | 90 | 180 | 270;
+  /** Draw at a different square size in px (e.g. 20 for the AI avatar sparkle). Defaults to the icon's natural size. */
+  size?: number;
   /** Layout classes, or a text color token to tint it (e.g. "text-text-brand"). */
   className?: string;
 };
@@ -67,8 +87,8 @@ type IconProps = {
  * so it follows the component's state: white on a primary button, red when destructive, gray when disabled.
  * Decorative by default: put the accessible name on the button or link that wraps it.
  */
-export function Icon({ name, rotate = 0, className }: IconProps) {
-  const [w, h] = natural[name];
+export function Icon({ name, rotate = 0, size, className }: IconProps) {
+  const [w, h] = size ? [size, size] : natural[name];
   const style: CSSProperties = {
     width: w,
     height: h,
